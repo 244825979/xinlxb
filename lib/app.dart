@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'constants/app_colors.dart';
-import 'screens/main_screen.dart';
 import 'screens/splash_screen.dart';
 import 'providers/home_provider.dart';
 import 'providers/notification_provider.dart';
@@ -32,15 +31,22 @@ class VoiceDiaryApp extends StatelessWidget {
         title: '心声日记',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: AppColors.primary,
-          scaffoldBackgroundColor: AppColors.background,
-          colorScheme: ColorScheme.light(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.primary,
+            brightness: Brightness.light,
             primary: AppColors.primary,
             secondary: AppColors.primaryDark,
             surface: AppColors.cardBackground,
-            background: AppColors.background,
             error: AppColors.error,
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+            onSurface: AppColors.textPrimary,
+            onError: Colors.white,
+          ).copyWith(
+            surfaceContainerHighest: AppColors.background,
           ),
+          scaffoldBackgroundColor: AppColors.background,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -52,7 +58,7 @@ class VoiceDiaryApp extends StatelessWidget {
             ),
             systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
-          cardTheme: CardTheme(
+          cardTheme: const CardThemeData(
             color: AppColors.cardBackground,
             elevation: 0,
             shape: RoundedRectangleBorder(
