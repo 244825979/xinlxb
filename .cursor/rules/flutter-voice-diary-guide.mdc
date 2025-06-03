@@ -1,0 +1,146 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 心声日记 Flutter App 开发指南
+
+## 项目概述
+心声日记是一个专注于语音记录和情感分享的移动应用，主要功能包括：
+- 声音记录与播放
+- AI语音助手对话
+- 每日情绪语录
+- 声音树洞社区
+- 情绪分析工具
+- 语音日记管理
+
+## 项目架构规范
+
+### 目录结构
+```
+lib/
+├── main.dart                      # 应用入口
+├── app.dart                       # 应用配置
+├── constants/                     # 常量定义
+├── models/                        # 数据模型
+├── services/                      # 业务服务层
+├── providers/                     # 状态管理
+├── screens/                       # 页面组件
+├── widgets/                       # 可复用组件
+└── utils/                         # 工具类
+```
+
+### 核心技术栈
+- **状态管理**: setState + Provider (ChangeNotifier)
+- **数据存储**: shared_preferences + 本地文件系统
+- **音频处理**: audioplayers + flutter_sound
+- **图表展示**: fl_chart
+- **权限管理**: permission_handler
+
+## 开发规范
+
+### 代码风格
+1. **不使用** freezed 包和 part 语法
+2. 优先使用 setState 进行局部状态管理
+3. 全局状态使用 Provider + ChangeNotifier
+4. 所有模型类使用简单的 class 定义，包含构造函数和必要方法
+
+### 资源管理
+- 用户头像使用本地图片：`assets/images/avatars/user_1.png`, `user_2.png` 等
+- 不使用 cached_network_image
+- 所有角色信息在代码中写死
+- 主色调：#D7EBFF
+
+### 功能模块
+
+#### 1. 首页 (HomeScreen)
+- 展示每日语音卡片（虚拟语音）
+- 模拟声音日记播放记录
+- 推荐心情语录（每日变化）
+- 今日心情状态展示
+
+#### 2. 声音树洞 (PlazaScreen)
+- 虚拟用户语音动态（录音 + 图文）
+- 浏览模式，禁止评论/互动
+- 卡片式布局展示内容
+
+#### 3. AI语音助手 (ChatScreen)
+- 录音/语音输入后AI反馈
+- 功能：情绪分析、轻度陪聊、语音转文字
+- 聊天界面设计
+
+#### 4. 个人档案 (ProfileScreen)
+- 个性声音画像（可编辑昵称、语音签名）
+- 心情分析图谱（图表展示）
+- 浏览记录、语音喜好管理
+
+## 关键模型定义
+
+### VoiceRecord
+```dart
+class VoiceRecord {
+  final String id;
+  final String title;
+  final String filePath;
+  final DateTime createdAt;
+  final Duration duration;
+  final bool isFavorite;
+  final String? description;
+}
+```
+
+### PlazaPost
+```dart
+class PlazaPost {
+  final String id;
+  final String userId;
+  final String userName;
+  final String userAvatar;
+  final String content;
+  final String? imageUrl;
+  final String? voiceFilePath;
+  final Duration? voiceDuration;
+  final DateTime createdAt;
+  final bool isVirtual;
+}
+```
+
+### ChatMessage
+```dart
+class ChatMessage {
+  final String id;
+  final String content;
+  final bool isUser;
+  final DateTime timestamp;
+  final String? voiceFilePath;
+  final Duration? voiceDuration;
+  final bool isVoiceMessage;
+}
+```
+
+## UI设计原则
+
+### 设计风格
+- 仿iPhone界面设计
+- 使用渐变背景：`LinearGradient(colors: [#EDF5FF, #D7EBFF])`
+- 卡片阴影：`BoxShadow(blurRadius: 12, color: Colors.black.withOpacity(0.05))`
+- 圆角设计：18px border radius
+
+### 颜色规范
+- 主色调：#D7EBFF
+- 背景色：#f0f2f5 (外层), #fff (卡片)
+- 文字颜色：#gray-800 (主要), #gray-500 (次要)
+- 播放按钮：#blue-400
+
+## 开发注意事项
+
+1. **无账户系统**: 不需要登录注册功能
+2. **本地数据**: 所有数据存储在本地，使用 shared_preferences
+3. **虚拟内容**: 广场和对话内容都是预设的虚拟数据
+4. **音频权限**: 需要处理录音权限申请
+5. **状态持久化**: 重要状态需要持久化到本地存储
+6. **错误处理**: 音频播放/录制需要完善的错误处理机制
+
+## 参考文档
+详细的项目架构和需求文档请参考：[README.md](mdc:README.md)
+UI设计原型参考：[index_new.html](mdc:index_new.html)

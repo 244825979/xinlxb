@@ -1,0 +1,210 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Flutter 开发标准规范
+
+## 项目约束条件
+
+### 禁用技术
+- ❌ **freezed** 包 - 不使用代码生成
+- ❌ **part** 语法 - 避免文件分割
+- ❌ **cached_network_image** - 使用本地资源
+- ❌ 外部字体库 - 使用系统默认字体
+- ❌ 账户系统 - 无登录注册功能
+
+### 必须使用的技术
+- ✅ **setState** - 优先的状态管理方式
+- ✅ **shared_preferences** - 本地数据存储
+- ✅ **Provider + ChangeNotifier** - 全局状态管理
+- ✅ 本地图片资源 - 头像使用 `user_1.png`, `user_2.png` 等
+- ✅ 虚拟数据 - 所有角色信息代码写死
+
+## 代码组织规范
+
+### 模型类定义标准
+```dart
+// ✅ 正确的模型类定义
+class VoiceRecord {
+  final String id;
+  final String title;
+  final DateTime createdAt;
+  
+  VoiceRecord({
+    required this.id,
+    required this.title,
+    required this.createdAt,
+  });
+  
+  // 可选：添加 toJson/fromJson 方法
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
+}
+```
+
+### Provider 使用规范
+```dart
+// ✅ 使用 ChangeNotifier 进行状态管理
+class HomeProvider extends ChangeNotifier {
+  bool _isPlaying = false;
+  
+  bool get isPlaying => _isPlaying;
+  
+  void togglePlay() {
+    _isPlaying = !_isPlaying;
+    notifyListeners();
+  }
+}
+```
+
+### 页面组件结构
+```dart
+// ✅ 标准的页面组件结构
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // UI 实现
+    );
+  }
+}
+```
+
+## 资源管理规范
+
+### 图片资源路径
+```
+assets/
+├── images/
+│   ├── avatars/
+│   │   ├── user_1.png          # 虚拟用户1头像
+│   │   ├── user_2.png          # 虚拟用户2头像
+│   │   ├── user_3.png          # 虚拟用户3头像
+│   │   └── default_avatar.png  # 默认头像
+│   └── backgrounds/
+│       └── mood_bg.png         # 心情背景图
+└── audio/
+    └── sample_voice.m4a        # 示例语音文件
+```
+
+### 常量定义规范
+```dart
+// constants/app_colors.dart
+class AppColors {
+  static const Color primary = Color(0xFFD7EBFF);
+  static const Color background = Color(0xFFF0F2F5);
+  static const Color cardBackground = Color(0xFFFFFFFF);
+  static const Color textPrimary = Color(0xFF1F2937);
+  static const Color textSecondary = Color(0xFF6B7280);
+}
+
+// constants/app_assets.dart
+class AppAssets {
+  static const String user1Avatar = 'assets/images/avatars/user_1.png';
+  static const String user2Avatar = 'assets/images/avatars/user_2.png';
+  static const String user3Avatar = 'assets/images/avatars/user_3.png';
+  static const String defaultAvatar = 'assets/images/avatars/default_avatar.png';
+}
+```
+
+## 数据存储规范
+
+### SharedPreferences 使用
+```dart
+// services/storage_service.dart
+class StorageService {
+  static const String _keyVoiceRecords = 'voice_records';
+  static const String _keyUserProfile = 'user_profile';
+  
+  Future<void> saveVoiceRecords(List<VoiceRecord> records) async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonList = records.map((r) => r.toJson()).toList();
+    await prefs.setString(_keyVoiceRecords, jsonEncode(jsonList));
+  }
+}
+```
+
+## 音频处理规范
+
+### 音频播放
+```dart
+// services/audio_service.dart
+class AudioService {
+  final AudioPlayer _player = AudioPlayer();
+  
+  Future<void> playLocal(String filePath) async {
+    try {
+      await _player.play(DeviceFileSource(filePath));
+    } catch (e) {
+      // 错误处理
+      print('播放失败: $e');
+    }
+  }
+}
+```
+
+## UI 设计规范
+
+### 卡片组件
+```dart
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(18),
+    boxShadow: [
+      BoxShadow(
+        blurRadius: 12,
+        color: Colors.black.withOpacity(0.05),
+        offset: Offset(0, 4),
+      ),
+    ],
+  ),
+  child: // 卡片内容
+)
+```
+
+### 渐变背景
+```dart
+Container(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(0xFFEDF5FF),
+        Color(0xFFD7EBFF),
+      ],
+    ),
+  ),
+)
+```
+
+## 错误处理规范
+
+### 音频相关错误处理
+- 权限被拒绝时的提示
+- 文件不存在时的默认处理
+- 播放失败时的用户反馈
+
+### 数据存储错误处理
+- SharedPreferences 读写失败处理
+- JSON 序列化失败处理
+- 文件系统访问失败处理
+
+## 性能优化指南
+
+1. **列表优化**: 使用 ListView.builder 进行长列表渲染
+2. **图片缓存**: 使用 AssetImage 进行本地图片加载
+3. **状态管理**: 避免不必要的 notifyListeners 调用
+4. **内存管理**: 及时释放音频播放器资源

@@ -1,0 +1,8 @@
+defaultConfig {
+    applicationId "com.aoyou.xinbo"
+    // You can update these in the ../build.gradle file
+    minSdkVersion flutter.minSdkVersion
+    targetSdkVersion flutter.targetSdkVersion
+    versionCode flutterVersionCode.toInteger()
+    versionName flutterVersionName
+} 
