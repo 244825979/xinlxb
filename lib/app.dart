@@ -55,10 +55,10 @@ class VoiceDiaryApp extends StatelessWidget {
           cardTheme: CardThemeData(
             color: AppColors.cardBackground,
             elevation: 0,
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(18)),
             ),
-            shadowColor: const Color(0x1AFF7272),
+            shadowColor: Color(0x1AFF7272),
           ),
           textTheme: const TextTheme(
             headlineLarge: TextStyle(
