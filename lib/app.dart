@@ -31,7 +31,7 @@ class VoiceDiaryApp extends StatelessWidget {
       child: MaterialApp(
         title: '心声日记',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light().copyWith(
+        theme: ThemeData(
           primaryColor: AppColors.primary,
           scaffoldBackgroundColor: AppColors.background,
           colorScheme: ColorScheme.light(
@@ -52,7 +52,7 @@ class VoiceDiaryApp extends StatelessWidget {
             ),
             systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
-          cardTheme: CardThemeData(
+          cardTheme: CardTheme(
             color: AppColors.cardBackground,
             elevation: 0,
             shape: RoundedRectangleBorder(
