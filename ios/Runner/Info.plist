@@ -11,7 +11,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>心情日记</string>
+	<string>心声日记</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>心情日记</string>
+	<string>心声日记</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -50,5 +50,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要访问相册以选择图片，用于个性化您的日记和头像</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>需要访问麦克风以录制语音日记</string>
+	<key>NSCameraUsageDescription</key>
+	<string>需要访问相机以拍摄照片，用于个性化您的日记和头像</string>
 </dict>
 </plist>

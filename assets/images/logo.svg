@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景圆形 -->
+    <circle cx="256" cy="256" r="256" fill="#FFEFEF"/>
+    
+    <!-- 日记本形状 -->
+    <rect x="128" y="96" width="256" height="320" rx="24" fill="white" filter="url(#shadow)"/>
+    <rect x="128" y="96" width="256" height="320" rx="24" stroke="#FF7272" stroke-width="8"/>
+    
+    <!-- 心形图案 -->
+    <path d="M256 280C288-16 432 120 256 280Z M256 280C224-16 80 120 256 280Z" fill="#FF7272"/>
+    
+    <!-- 声波线条 -->
+    <path d="M176 256 H336" stroke="#FF7272" stroke-width="8" stroke-linecap="round"/>
+    <path d="M196 216 H316" stroke="#FF7272" stroke-width="8" stroke-linecap="round"/>
+    <path d="M216 296 H296" stroke="#FF7272" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- 阴影滤镜 -->
+    <defs>
+        <filter id="shadow" x="120" y="88" width="272" height="336" filterUnits="userSpaceOnUse">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF7272" flood-opacity="0.1"/>
+        </filter>
+    </defs>
+</svg> 

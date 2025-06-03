@@ -29,24 +29,9 @@ class VoiceDiaryApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProfileProvider()..initialize()),
       ],
       child: MaterialApp(
-        title: '心情日记',
+        title: '心声日记',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: MaterialColor(
-            AppColors.primary.value,
-            <int, Color>{
-              50: AppColors.primaryLight,
-              100: Color(0xFFFFD6D6),
-              200: Color(0xFFFFBDBD),
-              300: Color(0xFFFFA4A4),
-              400: Color(0xFFFF8B8B),
-              500: AppColors.primary,
-              600: AppColors.primaryDark,
-              700: Color(0xFFD35451),
-              800: Color(0xFFBE4A47),
-              900: Color(0xFFA8403D),
-            },
-          ),
+        theme: ThemeData.light().copyWith(
           primaryColor: AppColors.primary,
           scaffoldBackgroundColor: AppColors.background,
           colorScheme: ColorScheme.light(
@@ -65,15 +50,15 @@ class VoiceDiaryApp extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
-            systemOverlayStyle: SystemUiOverlayStyle.dark, // 设置 AppBar 的状态栏样式
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
           cardTheme: CardThemeData(
             color: AppColors.cardBackground,
             elevation: 0,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(18)),
             ),
-            shadowColor: AppColors.primary.withOpacity(0.1),
+            shadowColor: const Color(0x1AFF7272),
           ),
           textTheme: const TextTheme(
             headlineLarge: TextStyle(
