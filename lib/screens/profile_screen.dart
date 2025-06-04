@@ -11,6 +11,7 @@ import 'mood_history_screen.dart';
 import 'main_screen.dart';
 import 'liked_posts_screen.dart';
 import 'liked_quotes_screen.dart';
+import 'settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -45,11 +46,31 @@ class ProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // 标题栏
-                    Text(
-                      AppStrings.profileTitle,
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppStrings.profileTitle,
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingsScreen(),
+                              ),
+                            );
+                          },
+                          icon: Icon(
+                            Icons.settings_outlined,
+                            color: AppColors.textPrimary,
+                            size: 24,
+                          ),
+                        ),
+                      ],
                     ),
                     
                     SizedBox(height: 30),
