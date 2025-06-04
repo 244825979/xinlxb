@@ -1,4 +1,7 @@
 class AppAssets {
+  // Logo资源
+  static const String logo = 'assets/images/logo.png';
+  
   // 头像资源
   static const String defaultAvatar = 'assets/images/avatars/default_avatar.png';
   static const String aiAvatar = 'assets/images/zhushou_image/zhushou.jpeg';

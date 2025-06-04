@@ -41,7 +41,7 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           WORKING_DIRECTORY: build/ios/ipa
-          IPA_FILE_NAME: 心声日记.ipa
+          IPA_FILE_NAME: xinlxb.ipa
           APPLE_USERNAME: chixin@lurcohongkong.shop
           APPLE_PASSWORD: axti-xlly-eamy-pdbg
           APPLE_ASC_PROVIDER: 79L3K25T7P

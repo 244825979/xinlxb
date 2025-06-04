@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../constants/app_colors.dart';
 import '../models/mood_data.dart';
 import '../services/storage_service.dart';
@@ -61,6 +62,11 @@ class _MoodHistoryScreenState extends State<MoodHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // 设置状态栏为黑色
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+    ));
+    
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -73,6 +79,9 @@ class _MoodHistoryScreenState extends State<MoodHistoryScreen> {
         ),
         backgroundColor: AppColors.cardBackground,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: AppColors.textPrimary),
           onPressed: () => Navigator.pop(context),

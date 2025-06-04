@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 import '../constants/app_colors.dart';
 import '../constants/app_strings.dart';
 import '../providers/plaza_provider.dart';
+import '../models/plaza_post.dart';
 
 class PublishPostScreen extends StatefulWidget {
   @override
@@ -108,11 +110,19 @@ class _PublishPostScreenState extends State<PublishPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // 设置状态栏为黑色
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+    ));
+    
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
+        ),
         leading: IconButton(
           icon: Icon(Icons.close, color: AppColors.textPrimary),
           onPressed: () => Navigator.pop(context),

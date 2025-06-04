@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../models/daily_quote.dart';
 import '../utils/quote_generator.dart';
@@ -12,6 +13,11 @@ class QuotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 设置状态栏为黑色
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+    ));
+    
     return Container(
       decoration: BoxDecoration(
         gradient: AppColors.backgroundGradient,
@@ -28,6 +34,9 @@ class QuotesScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: Colors.transparent,
+          ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: AppColors.textPrimary),
             onPressed: () => Navigator.of(context).pop(),
