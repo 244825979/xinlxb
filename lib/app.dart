@@ -10,7 +10,7 @@ import 'providers/chat_provider.dart';
 import 'providers/profile_provider.dart';
 
 class VoiceDiaryApp extends StatelessWidget {
-  const VoiceDiaryApp({Key? key}) : super(key: key);
+  const VoiceDiaryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +35,6 @@ class VoiceDiaryApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
             seedColor: AppColors.primary,
             brightness: Brightness.light,
-            primary: AppColors.primary,
-            secondary: AppColors.primaryDark,
-            surface: AppColors.cardBackground,
-            error: AppColors.error,
-            onPrimary: Colors.white,
-            onSecondary: Colors.white,
-            onSurface: AppColors.textPrimary,
-            onError: Colors.white,
-          ).copyWith(
-            surfaceContainerHighest: AppColors.background,
           ),
           scaffoldBackgroundColor: AppColors.background,
           appBarTheme: const AppBarTheme(
@@ -56,49 +46,58 @@ class VoiceDiaryApp extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
-            systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
-          cardTheme: const CardThemeData(
+          cardTheme: CardThemeData(
             color: AppColors.cardBackground,
-            elevation: 0,
+            shadowColor: AppColors.primary.withValues(alpha: 0.1),
+            elevation: 2,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-            ),
-            shadowColor: Color(0x1AFF7272),
-          ),
-          textTheme: const TextTheme(
-            headlineLarge: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-            headlineMedium: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
-            bodyLarge: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 16,
-            ),
-            bodyMedium: TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 14,
-            ),
-            bodySmall: TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 12,
+              borderRadius: BorderRadius.circular(18),
             ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
-              elevation: 0,
+              shadowColor: AppColors.primary.withValues(alpha: 0.2),
+              elevation: 3,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(18),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
               ),
             ),
+          ),
+          iconTheme: const IconThemeData(
+            color: AppColors.textSecondary,
+          ),
+          dividerTheme: DividerThemeData(
+            color: AppColors.textLight.withValues(alpha: 0.3),
+            thickness: 1,
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: AppColors.cardBackground,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(18),
+              borderSide: BorderSide(color: AppColors.textLight.withValues(alpha: 0.3)),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(18),
+              borderSide: BorderSide(color: AppColors.textLight.withValues(alpha: 0.3)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(18),
+              borderSide: const BorderSide(color: AppColors.primary, width: 2),
+            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
         home: SplashScreen(),
