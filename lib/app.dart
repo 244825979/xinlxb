@@ -47,22 +47,20 @@ class VoiceDiaryApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          cardTheme: CardThemeData(
+          cardTheme: const CardThemeData(
             color: AppColors.cardBackground,
-            shadowColor: AppColors.primary.withValues(alpha: 0.1),
             elevation: 2,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
             ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
-              shadowColor: AppColors.primary.withValues(alpha: 0.2),
               elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(18)),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
@@ -70,34 +68,34 @@ class VoiceDiaryApp extends StatelessWidget {
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
               foregroundColor: AppColors.primary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(18)),
               ),
             ),
           ),
           iconTheme: const IconThemeData(
             color: AppColors.textSecondary,
           ),
-          dividerTheme: DividerThemeData(
-            color: AppColors.textLight.withValues(alpha: 0.3),
+          dividerTheme: const DividerThemeData(
+            color: AppColors.textLight,
             thickness: 1,
           ),
-          inputDecorationTheme: InputDecorationTheme(
+          inputDecorationTheme: const InputDecorationTheme(
             filled: true,
             fillColor: AppColors.cardBackground,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide(color: AppColors.textLight.withValues(alpha: 0.3)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
+              borderSide: BorderSide(color: AppColors.textLight),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide(color: AppColors.textLight.withValues(alpha: 0.3)),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
+              borderSide: BorderSide(color: AppColors.textLight),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: const BorderSide(color: AppColors.primary, width: 2),
+              borderRadius: BorderRadius.all(Radius.circular(18)),
+              borderSide: BorderSide(color: AppColors.primary, width: 2),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
         home: SplashScreen(),
