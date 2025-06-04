@@ -47,13 +47,6 @@ class VoiceDiaryApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          cardTheme: const CardThemeData(
-            color: AppColors.cardBackground,
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-            ),
-          ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
@@ -75,27 +68,6 @@ class VoiceDiaryApp extends StatelessWidget {
           ),
           iconTheme: const IconThemeData(
             color: AppColors.textSecondary,
-          ),
-          dividerTheme: const DividerThemeData(
-            color: AppColors.textLight,
-            thickness: 1,
-          ),
-          inputDecorationTheme: const InputDecorationTheme(
-            filled: true,
-            fillColor: AppColors.cardBackground,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              borderSide: BorderSide(color: AppColors.textLight),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              borderSide: BorderSide(color: AppColors.textLight),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              borderSide: BorderSide(color: AppColors.primary, width: 2),
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
         home: SplashScreen(),
