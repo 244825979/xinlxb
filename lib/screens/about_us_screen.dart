@@ -163,49 +163,6 @@ class AboutUsScreen extends StatelessWidget {
               
               SizedBox(height: 24),
               
-              // 联系方式
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: AppColors.cardBackground.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [AppColors.softShadow],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.contact_mail_outlined,
-                          color: AppColors.primary,
-                          size: 24,
-                        ),
-                        SizedBox(width: 12),
-                        Text(
-                          '联系我们',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
-                      ],
-                    ),
-                    
-                    SizedBox(height: 16),
-                    
-                    _buildContactItem(Icons.email_outlined, '邮箱', 'support@voicediary.com'),
-                    _buildContactItem(Icons.phone_outlined, '客服', '400-123-4567'),
-                    _buildContactItem(Icons.location_on_outlined, '地址', '北京市朝阳区科技园'),
-                    _buildContactItem(Icons.language_outlined, '官网', 'www.voicediary.com'),
-                  ],
-                ),
-              ),
-              
-              SizedBox(height: 24),
-              
               // 感谢
               Container(
                 width: double.infinity,
@@ -311,40 +268,6 @@ class AboutUsScreen extends StatelessWidget {
               fontSize: 14,
               height: 1.6,
               color: AppColors.textSecondary,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildContactItem(IconData icon, String label, String value) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: AppColors.textSecondary,
-            size: 18,
-          ),
-          SizedBox(width: 12),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              value,
-              style: TextStyle(
-                fontSize: 14,
-                color: AppColors.textPrimary,
-              ),
             ),
           ),
         ],

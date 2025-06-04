@@ -160,15 +160,6 @@ class PrivacyPolicyScreen extends StatelessWidget {
                   '我们可能会不时更新本隐私政策。重大变更时，我们会通过应用内通知等方式告知您。继续使用服务表示您同意更新后的政策。',
                 ),
                 
-                // 联系方式
-                _buildSection(
-                  '9. 联系我们',
-                  '如您对隐私政策有任何疑问或建议，请联系我们：\n\n'
-                  '隐私专员邮箱：privacy@voicediary.com\n'
-                  '客服热线：400-123-4567\n'
-                  '通讯地址：北京市朝阳区xxx大厦xx层',
-                ),
-                
                 SizedBox(height: 32),
                 
                 // 同意按钮

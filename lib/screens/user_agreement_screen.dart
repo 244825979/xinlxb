@@ -129,15 +129,6 @@ class UserAgreementScreen extends StatelessWidget {
                   '我们可能会根据法律法规变化或业务发展需要修改本协议。修改后的协议将在应用内公布，继续使用服务即表示您同意修改后的协议。',
                 ),
                 
-                // 联系方式
-                _buildSection(
-                  '6. 联系我们',
-                  '如您对本协议有任何疑问，请通过以下方式联系我们：\n\n'
-                  '邮箱：support@voicediary.com\n'
-                  '客服热线：400-123-4567\n'
-                  '工作时间：周一至周五 9:00-18:00',
-                ),
-                
                 SizedBox(height: 32),
                 
                 // 同意按钮
